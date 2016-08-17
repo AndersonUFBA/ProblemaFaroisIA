@@ -150,53 +150,53 @@ public class AEstrela {
 		return true;
 	}
 	
-	public static boolean busca_Estrela(String cid_origem, String cid_destino) throws Exception{
+	public static boolean buscaEstrela(String cid_origem, String cid_destino) throws Exception{
 		
 		SortedSet<Celula> borda = new TreeSet<Celula>();
 		Node destino = ruas[Search_name(cid_destino)];
 		
-		Celula estado_atual = new Celula();
-		estado_atual.setEstado(ruas[Search_name(cid_origem)]);
+		Celula estadoAtual = new Celula();
+		estadoAtual.setEstado(ruas[Search_name(cid_origem)]);
 		
-		int funcao_de_borda=0;
+		int custoTotal=0;
 		
-		borda.add(estado_atual);
+		borda.add(estadoAtual);
 		
 		while(!borda.isEmpty()){
 			
 			disp_borda(borda);
 			
-			estado_atual=borda.first();
-			borda.remove(estado_atual);
+			estadoAtual=borda.first();
+			borda.remove(estadoAtual);
 			
-			System.out.println("\nRua com menor função de função de avalaliação e custo: "+ estado_atual.getEstado().getNome());
+			System.out.println("\nRua com menor função de função de avalaliação e custo: "+ estadoAtual.getEstado().getNome());
 			
-			if (estado_atual.getEstado() == destino) return(Reconstruct_path(estado_atual.getEstado()));
+			if (estadoAtual.getEstado() == destino) return(Reconstruct_path(estadoAtual.getEstado()));
 			
-			estado_atual.getEstado().setExplored(true);
+			estadoAtual.getEstado().setExplored(true);
 			
-			for (Node no : estado_atual.getEstado().vizinhos){
+			for (Node no : estadoAtual.getEstado().vizinhos){
 				System.out.println(no.getNome());
 				
 				
-				funcao_de_borda = estado_atual.getCusto()+distancia.get(estado_atual.getEstado(), no);
+				custoTotal = estadoAtual.getCusto()+distancia.get(estadoAtual.getEstado(), no);
 				
 				if (!no.isExplored() && !no.esta_na_borda(borda)){
 					Celula tmp = new Celula();
 					tmp.setEstado(no);
 					
-					tmp.setPai(estado_atual.getEstado());
+					tmp.setPai(estadoAtual.getEstado());
 					
-					tmp.setCusto(estado_atual.getCusto()+distancia.get(estado_atual.getEstado(), no));
+					tmp.setCusto(estadoAtual.getCusto()+distancia.get(estadoAtual.getEstado(), no));
 					
 					borda.add(tmp);
-					caminho.put(no, estado_atual.getEstado());
+					caminho.put(no, estadoAtual.getEstado());
 				}
 				else{
 					for (Celula e : borda) {
-				        if ( e.getEstado() == no && e.getCusto() > funcao_de_borda ) {
-				        	e.setPai(estado_atual.getEstado());
-				        	e.setCusto(funcao_de_borda);
+				        if ( e.getEstado() == no && e.getCusto() > custoTotal ) {
+				        	e.setPai(estadoAtual.getEstado());
+				        	e.setCusto(custoTotal);
 				        	break;
 				        }
 					}
@@ -211,6 +211,6 @@ public class AEstrela {
 	public static void main(String[] args) throws Exception {
 		setarHeuristica();
 		criarArestas();
-		busca_Estrela("R1","R13");
+		buscaEstrela("R1","R13");
 	}
 }
