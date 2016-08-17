@@ -34,7 +34,7 @@ public class AEstrela {
 	}
 	
 	
-	//Este método cria as aresta entre os nós atribuindo o custo entre eles
+	//Este método cria as arestas entre os nós atribuindo o custo entre eles
 	public static void criarArestas() throws Exception{
 		
 		addAresta("R1", "R2", 75);
