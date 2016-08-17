@@ -2,6 +2,7 @@ package br.com.aestrela;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -41,30 +42,42 @@ public class AEstrela {
 //	Este método cria o espaço de estados
 	public static void criarArestas() throws Exception{
 		
-		addAresta("R1", "R2", 75);
-		addAresta("R1", "R3", 118);
-		addAresta("R1", "Semaforo1", 300);
-		addAresta("R2", "R4", 71);
-		addAresta("R4", "Semaforo1", 300);	
+//		Função que define o valo de tempo do semáforo aleatoriamente. 
+
+		Random tempoSemaforo1 = new Random();
+//		Random tempoSemaforo2 = new Random();
+//		Random tempoSemaforo3 = new Random();
+//		Random tempoSemaforo4 = new Random();
+//		 
+        int tempo1 = tempoSemaforo1.nextInt(100) + 30;
+//        int tempo2 = tempoSemaforo2.nextInt(200) + 30;
+//        int tempo3 = tempoSemaforo3.nextInt(200) + 40;
+//        int tempo4 = tempoSemaforo4.nextInt(60) + 70;
+//		
+		addAresta("R1", "R2", 90);
+		addAresta("R1", "R3", 100);
+		addAresta("R1", "Semaforo1", tempo1);
+		addAresta("R2", "R4", 30);
+		addAresta("R4", "Semaforo1", 99);	
 		addAresta("Semaforo1", "R5", 99);		
-		addAresta("Semaforo1", "R6", 80);	
+		addAresta("Semaforo1", "R6", 100);	
 		addAresta("R3", "Semaforo2", 300);		
 		addAresta("Semaforo2", "R7", 300);	
 		addAresta("R7", "R8", 75);
-		addAresta("R9", "R8", 120);		
-		addAresta("R9", "R6", 146);		
-		addAresta("R9", "R10", 138);
-		addAresta("R10", "R6", 97);
-		addAresta("R11", "R10", 101);
-		addAresta("R11", "R5", 211);	
+		addAresta("R9", "R8", 88);		
+		addAresta("R9", "R6", 99);		
+		addAresta("R9", "R10", 130);
+		addAresta("R10", "R6", 98);
+		addAresta("R11", "R10", 102);
+		addAresta("R11", "R5", 180);	
 		addAresta("R11", "Semaforo3", 300);		
-		addAresta("R11", "R12", 85);		
+		addAresta("R11", "R12", 120);		
 		addAresta("Semaforo4", "R12", 300);	
 		addAresta("Semaforo4", "R13", 300);		
-		addAresta("R12", "R14", 142);
-		addAresta("R15", "R14", 92);
-		addAresta("R15", "R16", 87);
-		addAresta("Semaforo3", "R13", 87);
+		addAresta("R12", "R14", 102);
+		addAresta("R15", "R14", 98);
+		addAresta("R15", "R16", 99);
+		addAresta("Semaforo3", "R13", 100);
 	}
 	
 	// Este método estabelece a função de avaliacao de cada nó 
