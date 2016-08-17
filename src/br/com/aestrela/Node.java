@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.SortedSet;
 
 public class Node{
-	
+	//estrutura básica de cada nó
 	List <Node> vizinhos = new ArrayList<Node>();
 	
 	boolean explored;
@@ -14,7 +14,7 @@ public class Node{
 
 	
 	
-	public int getDist_buc() {
+	public int getDist() {
 		return dist;
 	}
 	public void setDist(int dist) {

@@ -138,7 +138,7 @@ public class AEstrela {
 	}
 	
 //	Delimitadores para cada passo da busca
-	public static void disp_borda(SortedSet<Celula> borda){
+	public static void dispBorda(SortedSet<Celula> borda){
 		System.out.println("------------ Borda ------------"); 
 		for (Celula e : borda) {
 			e.print();
@@ -146,7 +146,7 @@ public class AEstrela {
 		System.out.println("-------------------------------\n\n\n");
 	}
 	
-//	seta que aponta o caminho percorrido
+//	seta que aponta os nós percorridos
 	public static boolean Reconstruct_path(Node filho){
 		while (filho != null){
 			System.out.print(filho.getNome() + " <-- ");
@@ -158,13 +158,13 @@ public class AEstrela {
 
 
 //	Algoritimo A*
-	public static boolean buscaEstrela(String cid_origem, String cid_destino) throws Exception{
+	public static boolean buscaEstrela(String ruaOrigem, String ruaDestino) throws Exception{
 		
 		SortedSet<Celula> borda = new TreeSet<Celula>();
-		Node destino = ruas[buscaNome(cid_destino)];
+		Node destino = ruas[buscaNome(ruaDestino)];
 		
 		Celula estadoAtual = new Celula();
-		estadoAtual.setEstado(ruas[buscaNome(cid_origem)]);
+		estadoAtual.setEstado(ruas[buscaNome(ruaOrigem)]);
 		
 		int custoTotal=0;
 		
@@ -172,7 +172,7 @@ public class AEstrela {
 		
 		while(!borda.isEmpty()){
 			
-			disp_borda(borda);
+			dispBorda(borda);
 			
 			estadoAtual=borda.first();
 			borda.remove(estadoAtual);

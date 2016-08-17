@@ -2,7 +2,7 @@ package br.com.aestrela;
 
 public class Celula implements Comparable<Celula> {
 
-
+	//classe que define o modelo de cada celula
 	private int custo;
 	private Node pai = new Node();
 	private Node estado;
@@ -17,15 +17,15 @@ public class Celula implements Comparable<Celula> {
 	}
 
 	public void print(){
-		System.out.println("Pai: " + pai.getNome() + " -> " + estado.getNome() + "      Custo: " + custo + "  G + H: " + (custo + estado.getDist_buc()) );
+		System.out.println("Pai: " + pai.getNome() + " -> " + estado.getNome() + "      Custo: " + custo + "  G + H: " + (custo + estado.getDist()) );
 	}
 
 	@Override
 	public int compareTo(Celula outroNode) {
-		if (this.custo + estado.getDist_buc() < outroNode.custo + outroNode.getEstado().getDist_buc()) {
+		if (this.custo + estado.getDist() < outroNode.custo + outroNode.getEstado().getDist()) {
             return -1;
         }
-        if (this.custo + estado.getDist_buc() > outroNode.custo + outroNode.getEstado().getDist_buc()) {
+        if (this.custo + estado.getDist() > outroNode.custo + outroNode.getEstado().getDist()) {
             return 1;
         }
         return 0;
