@@ -14,18 +14,22 @@ public class AEstrela {
 	static Map<Node, Node> caminho = new HashMap<Node, Node>();
 	static Node[] ruas = new Node[30];
 	
-	public static int Search_name(String nomeRua) throws Exception{
+//	método utilizado para buscar o nome da rua no para associá-la a outra rua, caso não seja 
+//	encontrada retorna "Rua inexistente"
+	public static int buscaNome(String nomeRua) throws Exception{
 		for (int i=0; i<20; i++){
 			if (nomeRua.equals(ruas[i].getNome())){
 				return i;
+				
 			}
 		}
 		throw new Exception("Rua inexistente.");
 	}
-
-	public static void addAresta(String cid1, String cid2, int dist) throws Exception{
-		int cod1 = Search_name(cid1);
-		int cod2 = Search_name(cid2);
+	
+//	método tem a função de criar a ligação entre dois nós estabelecendo o custo
+	public static void addAresta(String rua1, String rua2, int dist) throws Exception{
+		int cod1 = buscaNome(rua1);
+		int cod2 = buscaNome(rua2);
 		
 		ruas[cod1].AddVizinhos(ruas[cod2]);
 		ruas[cod2].AddVizinhos(ruas[cod1]);
@@ -34,7 +38,7 @@ public class AEstrela {
 	}
 	
 	
-	//Este método cria as arestas entre os nós atribuindo o custo entre eles
+//	Este método cria o espaço de estados
 	public static void criarArestas() throws Exception{
 		
 		addAresta("R1", "R2", 75);
@@ -132,7 +136,8 @@ public class AEstrela {
 		
 		
 	}
-
+	
+//	Delimitadores para cada passo da busca
 	public static void disp_borda(SortedSet<Celula> borda){
 		System.out.println("------------ Borda ------------"); 
 		for (Celula e : borda) {
@@ -141,6 +146,7 @@ public class AEstrela {
 		System.out.println("-------------------------------\n\n\n");
 	}
 	
+//	seta que aponta o caminho percorrido
 	public static boolean Reconstruct_path(Node filho){
 		while (filho != null){
 			System.out.print(filho.getNome() + " <-- ");
@@ -149,14 +155,16 @@ public class AEstrela {
 		System.out.println();
 		return true;
 	}
-	
+
+
+//	Algoritimo A*
 	public static boolean buscaEstrela(String cid_origem, String cid_destino) throws Exception{
 		
 		SortedSet<Celula> borda = new TreeSet<Celula>();
-		Node destino = ruas[Search_name(cid_destino)];
+		Node destino = ruas[buscaNome(cid_destino)];
 		
 		Celula estadoAtual = new Celula();
-		estadoAtual.setEstado(ruas[Search_name(cid_origem)]);
+		estadoAtual.setEstado(ruas[buscaNome(cid_origem)]);
 		
 		int custoTotal=0;
 		
@@ -211,6 +219,8 @@ public class AEstrela {
 	public static void main(String[] args) throws Exception {
 		setarHeuristica();
 		criarArestas();
+		
+		//definição do estado inicia e final respectivamente
 		buscaEstrela("R1","R13");
 	}
 }
