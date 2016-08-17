@@ -39,13 +39,13 @@ public class AEstrela {
 		
 		addAresta("R1", "R2", 75);
 		addAresta("R1", "R3", 118);
-		addAresta("R1", "Farol1", 300);
+		addAresta("R1", "Semaforo1", 300);
 		addAresta("R2", "R4", 71);
-		addAresta("R4", "Farol1", 300);	
-		addAresta("Farol1", "R5", 99);		
-		addAresta("Farol1", "R6", 80);	
-		addAresta("R3", "Farol2", 300);		
-		addAresta("Farol2", "R7", 300);	
+		addAresta("R4", "Semaforo1", 300);	
+		addAresta("Semaforo1", "R5", 99);		
+		addAresta("Semaforo1", "R6", 80);	
+		addAresta("R3", "Semaforo2", 300);		
+		addAresta("Semaforo2", "R7", 300);	
 		addAresta("R7", "R8", 75);
 		addAresta("R9", "R8", 120);		
 		addAresta("R9", "R6", 146);		
@@ -53,14 +53,14 @@ public class AEstrela {
 		addAresta("R10", "R6", 97);
 		addAresta("R11", "R10", 101);
 		addAresta("R11", "R5", 211);	
-		addAresta("R11", "Farol3", 300);		
+		addAresta("R11", "Semaforo3", 300);		
 		addAresta("R11", "R12", 85);		
-		addAresta("Farol4", "R12", 300);	
-		addAresta("Farol4", "R13", 300);		
+		addAresta("Semaforo4", "R12", 300);	
+		addAresta("Semaforo4", "R13", 300);		
 		addAresta("R12", "R14", 142);
 		addAresta("R15", "R14", 92);
 		addAresta("R15", "R16", 87);
-		addAresta("Farol3", "R13", 87);
+		addAresta("Semaforo3", "R13", 87);
 	}
 	
 	// Este método estabelece a função de avaliacao de cada nó 
@@ -88,16 +88,16 @@ public class AEstrela {
 		ruas[5].setNome("R5");
 		ruas[5].setDist(176);
 		
-		ruas[6].setNome("Farol3");
+		ruas[6].setNome("Semaforo3");
 		ruas[6].setDist(77);
 		
-		ruas[7].setNome("Farol4");
+		ruas[7].setNome("Semaforo4");
 		ruas[7].setDist(151);
 		
 		ruas[8].setNome("R15");
 		ruas[8].setDist(226);
 		
-		ruas[9].setNome("Farol2");
+		ruas[9].setNome("Semaforo2");
 		ruas[9].setDist(244);
 		
 		ruas[10].setNome("R7");
@@ -115,7 +115,7 @@ public class AEstrela {
 		ruas[14].setNome("R6");
 		ruas[14].setDist(193);
 		
-		ruas[15].setNome("Farol1");
+		ruas[15].setNome("Semaforo1");
 		ruas[15].setDist(253);
 		
 		ruas[16].setNome("R3");
